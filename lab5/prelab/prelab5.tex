@@ -1,0 +1,179 @@
+\documentclass[11pt]{exam}
+\newcommand{\myname}{Nigel Lee}
+\newcommand{\myemail}{Lee3188@vandals.uidaho.edu}
+\newcommand{\myhwtype}{Pre-Lab}
+\newcommand{\myhwnum}{5}
+\newcommand{\myclass}{ECE-351}
+\newcommand{\mylecture}{}
+\newcommand{\mysection}{}
+
+% Prefix for numedquestion's
+\newcommand{\questiontype}{Question}
+
+% Use this if your "written" questions are all under one section
+% For example, if the homework handout has Section 5: Written Questions
+% and all questions are 5.1, 5.2, 5.3, etc. set this to 5
+% Use for 0 no prefix. Redefine as needed per-question.
+\newcommand{\writtensection}{0}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb, mathtools}  % Some math symbols
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage{fancyvrb}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{centernot}
+\usepackage{sectsty,ulem}  % section styling, used for the coloration of headers
+\usepackage{subfig}   % used to create figures of sub-figures
+\usepackage{float}    % Package for improving figure locations
+\usepackage{xcolor} % allows us to use HTML color formats
+\usepackage{cite}
+\usepackage{pdfpages} % used for importing PDFs as their own pages \includepdf
+\usepackage{appendix} % appendix stuff: https://texfaq.org/FAQ-appendix
+
+%% Code block stuff
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.98}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=true,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=4pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=true,
+    tabsize=4
+}
+\lstset{style=mystyle}
+%% end code block stuff
+
+\linespread{1.3} % Line spacing
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\card}{\vert}{\vert}
+
+% Uncomment the following line to get Solarized-themed source listings
+% You will have had to already installed the solarized-light package
+% https://github.com/jez/latex-solarized
+%
+%\usepackage{solarized-light}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\pagestyle{empty}
+
+\def\indented#1{\list{}{}\item[]}
+\let\indented=\endlist
+
+\newcounter{questionCounter}
+\newcounter{partCounter}[questionCounter]
+
+\newenvironment{namedquestion}[1]{
+    \addtocounter{questionCounter}{1}%
+    \setcounter{partCounter}{0}%
+    \vspace{.2in}%
+        \noindent{\bf #1}%
+    \vspace{0.3em} \hrule \vspace{.1in}%
+}{}
+
+\newenvironment{numedquestion}[0]{%
+	\stepcounter{questionCounter}%
+    \vspace{.2in}%
+        \ifx\writtensection\undefined
+        \noindent{\bf \questiontype \; \arabic{questionCounter}. }%
+        \else
+          \if\writtensection0
+          \noindent{\bf \questiontype \; \arabic{questionCounter}. }%
+          \else
+          \noindent{\bf \questiontype \; \writtensection.\arabic{questionCounter} }%
+        \fi
+    \vspace{0.3em} \hrule \vspace{.1in}%
+}{}
+
+\newenvironment{alphaparts}[0]{%
+  \begin{enumerate}[label=\textbf{\Alph*.}]
+}{\end{enumerate}}
+
+\newenvironment{arabicparts}[0]{%
+  \begin{enumerate}[label=\textbf{\arabic{questionCounter}.\arabic*})]
+}{\end{enumerate}}
+
+\newenvironment{questionpart}[0]{%
+  \item
+}{}
+
+\newcommand{\answerbox}[1]{
+\begin{framed}
+\vspace{#1}
+\end{framed}}
+
+\pagestyle{head}
+
+\headrule
+\header{\textbf{\myclass\ \mylecture\mysection}}%
+{\textbf{\myname\ (\myemail)}}%
+{\textbf{\myhwtype\ \myhwnum}}
+
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+  {\Large \myclass{} \myhwtype{} \myhwnum} \\
+  \myname{} (\myemail{}) \\
+  Febuary 18, 2025
+\end{center}
+
+\begin{namedquestion}{Task 1: Find the transfer function}
+    \begin{flalign*}
+    & V_{out} = V_{in} \cdot \frac{Z_{LC}}{Z_R + Z_{LC}} : Z_{LC} = 
+        (\frac{1}{Z_L}+\frac{1}{Z_C})^{-1} = 
+        (\frac{1}{j\omega L}+j\omega C)^{-1} =
+        \frac{1}{\frac{1}{j \omega L}+j \omega C}=
+        \frac{j \omega L}{1 - \omega^{2}LC}& \\
+    & \Rightarrow V_{out} = V_{in} \frac{\frac{j \omega L}{1 - \omega^{2}
+        LC}}{R + \frac{j \omega L}{1 - \omega^{2}LC}}
+        = V_{in}\frac{j \omega L}{R(1-\omega^2LC) + j \omega L}
+        : s = j \omega \quad s^2 = -\omega^2 & \\
+    & \rightarrow \frac{V_{out}}{V_{in}} = \frac{sL}{s^2RLC+sL+R}
+        = \frac{s\frac{1}{RC}}{s^2+s\frac{1}{RC}+\frac{1}{LC}}  &
+    \end{flalign*}
+\end{namedquestion}
+
+\begin{namedquestion}{Task 2: Find the impulse response}
+    \begin{flalign*}
+    & p = \dfrac{-\dfrac{1}{RC}+\sqrt{(\dfrac{1}{RC})^2-4\dfrac{1}{LC}}}{2}
+        = -\frac{1}{2RC}+\frac{1}{2}\sqrt{\frac{1}{R^2C^2}-\frac{4}{LC}}
+        : \alpha = -\frac{1}{2RC} \quad \beta=\frac{1}{2}\sqrt{\frac{1}{R^2C^2}-\frac{4}{LC}}& \\[1em]
+    & g = \left.s\frac{1}{RC}\right|_{s=p} =
+    \frac{-1}{2R^2C^2}+\sqrt{\frac{1}{4R^4C^4}-\frac{1}{R^2C^3L}} & \\[1em]
+    & |g| = \sqrt{\frac{1}{4R^4C^4} +\frac{1}{4R^4C^4} -\frac{1}{R^2C^3L}}
+    = \sqrt{\frac{1}{2R^4C^4}-\frac{1}{R^2C^3L}} & \\[1em]
+    & \angle g = \tan^{-1}\left(\dfrac{\sqrt{\dfrac{1}{4R^4C^4}-
+        \dfrac{1}{R^2C^3L}}}{\dfrac{-1}{2R^2C^2}}\right)
+        = \tan^{-1}\left(-\sqrt{\frac{4R^4C^4}{4R^4C^4}-\frac{4R^2C^4}{R^2C^3L}} \right) 
+        =\tan^{-1}\left(-\sqrt{1-\frac{4R^2C}{L}}\right) & \\[1em]
+    &h(t) = \frac{\sqrt{\dfrac{1}{2R^4C^4}-\dfrac{1}{R^2C^3L}}}{-j\dfrac{1}{2}\sqrt{\dfrac{1}{R^2C^2}-\dfrac{4}{LC}}}exp\left(\dfrac{-1}{2RC}t\right)
+    \sin\left[-j*\frac{1}{2}\sqrt{\frac{1}{R^2C^2}-\frac{4}{LC}}t
+    +\tan^{-1}\left(-\sqrt{1-\frac{4R^2C}{L}}\right)\right]u(t) & \\[1em]
+    &h(t) = -j\sqrt{\dfrac{\dfrac{1}{2R^4C^4}-\dfrac{1}{R^2C^3L}}{\dfrac{1}{4R^2C^2}-\dfrac{1}{LC}}}exp\left(\frac{-1}{2RC}t\right)
+    \sin\left[-j*\frac{1}{2}\sqrt{\frac{1}{R^2C^2}-\frac{4}{LC}}t
+    +\tan^{-1}\left(-\sqrt{1-\frac{4R^2C}{L}}\right)\right]u(t) &
+    \end{flalign*}
+    Note: the -j term is to seperate the j component of $p = \alpha +j \omega$
+\end{namedquestion}
+
+\end{document}
