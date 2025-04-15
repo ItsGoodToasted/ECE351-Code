@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Solver" version="1.3.0.9126"?>
+<worksheet xmlns="http://smath.info/schemas/worksheet/1.0">
+  <settings ppi="96">
+    <identity>
+      <id>859f2ee2-c3ce-419c-a0c6-c1c0a5c7855c</id>
+      <revision>4</revision>
+    </identity>
+    <metadata lang="eng">
+      <author>Nigel Lee</author>
+    </metadata>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <trailingZeros>false</trailingZeros>
+      <significantDigitsMode>true</significantDigitsMode>
+      <mixedNumbers>false</mixedNumbers>
+      <roundingMode>0</roundingMode>
+      <approximateEqualAccuracy>3</approximateEqualAccuracy>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="false" viewMode="2" printGrid="false" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true" hideElementsHighlightings="true">
+      <paper id="1" orientation="Portrait" width="850" height="1100" />
+      <margins left="39" right="39" top="49" bottom="49" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependencies>
+      <assembly name="SMath Core" version="1.73.9126.0" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="MathRegion" version="1.73.9126.0" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="TextRegion" version="1.73.9126.0" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+    </dependencies>
+  </settings>
+  <regions type="content">
+    <region left="216" top="27" width="283" height="32" color="#000000" fontSize="16">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-size: 16px;">Series RLC Bandpass Filter:</p>
+        </content>
+      </text>
+    </region>
+    <region left="27" top="99" width="100" height="30" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">R</e>
+          <e type="operand">1</e>
+          <e type="operand" style="unit">ohm</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="180" top="99" width="78" height="30" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">L</e>
+          <e type="operand">1</e>
+          <e type="operand" style="unit">H</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="297" top="99" width="78" height="30" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">C</e>
+          <e type="operand">1</e>
+          <e type="operand" style="unit">F</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="405" top="99" width="140" height="38" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">f.c1</e>
+          <e type="operand">1800</e>
+          <e type="operand" style="unit">Hz</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="576" top="99" width="140" height="38" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">f.c2</e>
+          <e type="operand">2000</e>
+          <e type="operand" style="unit">Hz</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="63" top="333" width="173" height="29" color="#000000" fontSize="14">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-weight: bold; font-size: 14px;">Transfer Function</p>
+        </content>
+      </text>
+    </region>
+    <region left="315" top="333" width="178" height="29" color="#000000" fontSize="14">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-weight: bold; font-size: 14px;">Center Frequency </p>
+        </content>
+      </text>
+    </region>
+    <region left="54" top="369" width="241" height="105" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">s</e>
+          <e type="function" args="1">H</e>
+          <e type="operand">R</e>
+          <e type="operand">L</e>
+          <e type="operator" args="2">/</e>
+          <e type="operand">s</e>
+          <e type="operator" args="2">*</e>
+          <e type="operand">s</e>
+          <e type="operand">2</e>
+          <e type="operator" args="2">^</e>
+          <e type="operand">R</e>
+          <e type="operand">L</e>
+          <e type="operator" args="2">/</e>
+          <e type="operand">s</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">+</e>
+          <e type="operand">1</e>
+          <e type="operand">L</e>
+          <e type="operand">C</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">+</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="360" top="387" width="158" height="56" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">f.0</e>
+          <e type="operand">1</e>
+          <e type="operand">2</e>
+          <e type="operand">π</e>
+          <e type="operator" args="2">*</e>
+          <e type="operand">L</e>
+          <e type="operand">C</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">sqrt</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">≡</e>
+        </input>
+      </math>
+    </region>
+    <region left="360" top="450" width="243" height="40" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">f.0</e>
+          <e type="operand">f.c1</e>
+          <e type="operand">f.c2</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">sqrt</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">1897</e>
+          <e type="operand" style="unit">Hz</e>
+          <e type="operator" args="2">*</e>
+        </result>
+      </math>
+    </region>
+    <region left="459" top="504" width="140" height="29" color="#000000" fontSize="14">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-size: 14px; font-weight: bold;">Quality Factor</p>
+        </content>
+      </text>
+    </region>
+    <region left="72" top="513" width="109" height="29" color="#000000" fontSize="14">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-weight: bold; font-size: 14px;">Bandwidth</p>
+        </content>
+      </text>
+    </region>
+    <region left="486" top="549" width="154" height="61" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">Q</e>
+          <e type="operand">f.0</e>
+          <e type="operand">β</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">9.487</e>
+        </result>
+      </math>
+    </region>
+    <region left="81" top="567" width="132" height="38" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">β</e>
+          <e type="operand">f.c2</e>
+          <e type="operand">f.c1</e>
+          <e type="operator" args="2">-</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="63" top="684" width="229" height="29" color="#000000" fontSize="14">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-weight: bold; font-size: 14px;">Lower Cutoff Frequency</p>
+        </content>
+      </text>
+    </region>
+    <region left="351" top="684" width="228" height="29" color="#000000" fontSize="14">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-weight: bold; font-size: 14px;">Upper Cutoff Frequency</p>
+        </content>
+      </text>
+    </region>
+    <region left="63" top="747" width="304" height="73" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">ω.c1</e>
+          <e type="operand">R</e>
+          <e type="operand">2</e>
+          <e type="operand">L</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operator" args="1">-</e>
+          <e type="operand">R</e>
+          <e type="operand">2</e>
+          <e type="operand">L</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operand">2</e>
+          <e type="operator" args="2">^</e>
+          <e type="operand">1</e>
+          <e type="operand">LC</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operator" args="2">+</e>
+          <e type="function" args="1">sqrt</e>
+          <e type="operator" args="2">+</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="369" top="747" width="286" height="73" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">ω.c2</e>
+          <e type="operand">R</e>
+          <e type="operand">2</e>
+          <e type="operand">L</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operand">R</e>
+          <e type="operand">2</e>
+          <e type="operand">L</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operand">2</e>
+          <e type="operator" args="2">^</e>
+          <e type="operand">1</e>
+          <e type="operand">LC</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operator" args="2">+</e>
+          <e type="function" args="1">sqrt</e>
+          <e type="operator" args="2">+</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="54" top="846" width="105" height="61" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">f.c1</e>
+          <e type="operand">ω.c1</e>
+          <e type="operand">2</e>
+          <e type="operand">π</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="369" top="846" width="105" height="61" color="#000000" fontSize="14">
+      <math>
+        <input>
+          <e type="operand">f.c2</e>
+          <e type="operand">ω.c2</e>
+          <e type="operand">2</e>
+          <e type="operand">π</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+  </regions>
+</worksheet>
